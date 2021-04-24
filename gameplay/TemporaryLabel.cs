@@ -7,7 +7,7 @@ public class TemporaryLabel : Node2D {
     private string _text = "placeholder";
     private TextEffect _effect = TextEffect.Shake;
     private Color _textColor = Colors.White;
-    
+    private AnimationPlayer _animationPlayer;
 
     [Export]
     public Color TextColor {
@@ -37,12 +37,18 @@ public class TemporaryLabel : Node2D {
     }
 
     public override void _Ready() {
-        _richTextLabel = GetNode<RichTextLabel>("RichTextLabel");
+        _richTextLabel = this.GetNode<RichTextLabel>();
         RefreshText();
+
+        _animationPlayer = this.GetNode<AnimationPlayer>();
+        _animationPlayer.Play("Fade");
     }
 
     public override void _PhysicsProcess(float delta) {
-        
+        if (_richTextLabel.Modulate.a <= 0) {
+            GD.Print("Done");
+            QueueFree();
+        }
     }
 
     private void RefreshText() {

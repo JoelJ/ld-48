@@ -1,23 +1,41 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://gameplay/TemporaryLabel.cs" type="Script" id=1]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Fade"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("RichTextLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
 
 [node name="TemporaryLabel" type="Node2D"]
 position = Vector2( -1.05945, 0 )
 script = ExtResource( 1 )
-Text = null
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
+modulate = Color( 1, 1, 1, 0.45 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 1.32433
+margin_left = 1.58919
 margin_top = -15.3622
-margin_right = 121.324
+margin_right = 121.589
 margin_bottom = 16.6378
 rect_clip_content = false
 bbcode_enabled = true
-bbcode_text = "[shake]placeholder"
-text = "placeholder"
+bbcode_text = "[color=#ffffff][shake level=5]"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Fade = SubResource( 1 )
