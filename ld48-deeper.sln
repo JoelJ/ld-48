@@ -1,0 +1,19 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ld48-deeper", "ld48-deeper.csproj", "{87BB5D0F-8CB8-440A-9A43-C67F64874F2A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+	Debug|Any CPU = Debug|Any CPU
+	ExportDebug|Any CPU = ExportDebug|Any CPU
+	ExportRelease|Any CPU = ExportRelease|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{87BB5D0F-8CB8-440A-9A43-C67F64874F2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87BB5D0F-8CB8-440A-9A43-C67F64874F2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87BB5D0F-8CB8-440A-9A43-C67F64874F2A}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{87BB5D0F-8CB8-440A-9A43-C67F64874F2A}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{87BB5D0F-8CB8-440A-9A43-C67F64874F2A}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{87BB5D0F-8CB8-440A-9A43-C67F64874F2A}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+	EndGlobalSection
+EndGlobal
