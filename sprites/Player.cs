@@ -1,21 +1,55 @@
 using Godot;
 using System;
 
-public class Player : Node2D
-{
-	// Declare member variables here. Examples:
-	// private int a = 2;
-	// private string b = "text";
+public class Player : Node2D {
+	private AnimationPlayer _animationPlayer;
 
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-		
+	private Direction _direction = Direction.Down;
+	
+	public override void _Ready() {
+		_animationPlayer = this.GetNode<AnimationPlayer>();
+		_animationPlayer.Play("WalkDown");
 	}
 
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//      
-//  }
+	public override void _PhysicsProcess(float delta) {
+		var direction = ReadInput();
+		ApplyAnimation(direction);
+
+		_direction = direction;
+	}
+
+	private Direction ReadInput() {
+		if (Input.IsActionJustPressed("up")) {
+			return Direction.Up;
+		}
+
+		if (Input.IsActionPressed("down")) {
+			return Direction.Down;
+		}
+
+		if (Input.IsActionPressed("left")) {
+			return Direction.Left;
+		}
+
+		if (Input.IsActionPressed("right")) {
+			return Direction.Right;
+		}
+
+		return Direction.None;
+	}
+
+	private void ApplyAnimation(Direction direction) {
+		switch (direction) {
+			case Direction.None:
+				break;
+			case Direction.Up:
+			case Direction.Down:
+			case Direction.Left:
+			case Direction.Right:
+				_animationPlayer.Play("Walk" + direction);
+				break;
+			default:
+				throw new ArgumentOutOfRangeException(nameof(direction), direction, null);
+		}
+	}
 }

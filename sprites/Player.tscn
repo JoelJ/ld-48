@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/sprite_sheet.png" type="Texture" id=1]
 [ext_resource path="res://sprites/Player.cs" type="Script" id=2]
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=1]
 resource_name = "IdleDown"
 length = 0.1
 tracks/0/type = "value"
@@ -19,7 +19,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=2]
 resource_name = "IdleLeft"
 length = 0.1
 tracks/0/type = "value"
@@ -35,7 +35,7 @@ tracks/0/keys = {
 "values": [ 13 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=3]
 resource_name = "IdleRight"
 length = 0.1
 tracks/0/type = "value"
@@ -51,7 +51,7 @@ tracks/0/keys = {
 "values": [ 10 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=4]
 resource_name = "IdleUp"
 length = 0.1
 tracks/0/type = "value"
@@ -67,8 +67,7 @@ tracks/0/keys = {
 "values": [ 5 ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "WalkDown"
+[sub_resource type="Animation" id=5]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -84,8 +83,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 1, 0, 3, 4, 3 ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "WalkLeft"
+[sub_resource type="Animation" id=6]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -101,8 +99,7 @@ tracks/0/keys = {
 "values": [ 13, 14, 15, 14 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "WalkRight"
+[sub_resource type="Animation" id=7]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -118,8 +115,7 @@ tracks/0/keys = {
 "values": [ 10, 11, 12, 11 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "WalkUp"
+[sub_resource type="Animation" id=8]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -144,11 +140,11 @@ hframes = 16
 frame = 10
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/IdleDown = SubResource( 5 )
-anims/IdleLeft = SubResource( 7 )
-anims/IdleRight = SubResource( 8 )
-anims/IdleUp = SubResource( 6 )
-anims/WalkDown = SubResource( 1 )
-anims/WalkLeft = SubResource( 4 )
-anims/WalkRight = SubResource( 3 )
-anims/WalkUp = SubResource( 2 )
+anims/IdleDown = SubResource( 1 )
+anims/IdleLeft = SubResource( 2 )
+anims/IdleRight = SubResource( 3 )
+anims/IdleUp = SubResource( 4 )
+anims/WalkDown = SubResource( 5 )
+anims/WalkLeft = SubResource( 6 )
+anims/WalkRight = SubResource( 7 )
+anims/WalkUp = SubResource( 8 )
