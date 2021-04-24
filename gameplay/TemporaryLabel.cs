@@ -46,7 +46,6 @@ public class TemporaryLabel : Node2D {
 
     public override void _PhysicsProcess(float delta) {
         if (_richTextLabel.Modulate.a <= 0) {
-            GD.Print("Done");
             QueueFree();
         }
     }

@@ -3,6 +3,7 @@ using Godot;
 
 public class Stats : Node2D, IStats {
     private PackedScene _fadingLabelScene;
+    private PackedScene _kaboomScene;
     
     [Export(PropertyHint.Range, "10,255")] public int MaxHealth { get; set; } = 10;
     public int RemainingHealth { get; set; } = 10;
@@ -17,6 +18,7 @@ public class Stats : Node2D, IStats {
     
     public override void _Ready() {
         _fadingLabelScene = ResourceLoader.Load<PackedScene>($"res://gameplay/TemporaryLabel.tscn");
+        _kaboomScene = ResourceLoader.Load<PackedScene>($"res://gameplay/Kaboom.tscn");
         RemainingHealth = MaxHealth;
         Root = this.FindRoot();
     }
@@ -36,20 +38,30 @@ public class Stats : Node2D, IStats {
     public void Hurt(int amount) {
         RemainingHealth = Mathf.Clamp(RemainingHealth - amount, 0, MaxHealth);
         GD.Print(Root.Name(), " hurt by ", amount, " -> ", RemainingHealth);
-        
+
+        var toAddChildTo = Root.AsNode().GetParent();
+
         var label = _fadingLabelScene.Instance<TemporaryLabel>();
         label.Text = $"-{amount}";
         label.TextColor = Colors.Red;
         label.Effect = TemporaryLabel.TextEffect.Shake;
         label.GlobalPosition = Root.AsNode().GlobalPosition;
-        Root.AsNode().GetParent().AddChild(label);
+        toAddChildTo.AddChild(label);
 
         if (RemainingHealth <= 0) {
+            var kaboom = _kaboomScene.Instance<Kaboom>();
+            kaboom.GlobalPosition = Root.AsNode().GlobalPosition;
+            toAddChildTo.AddChild(kaboom);
             Root.Die();
         }
     }
 
     public void Miss() {
-        
+        var label = _fadingLabelScene.Instance<TemporaryLabel>();
+        label.Text = "Miss!";
+        label.TextColor = Colors.Limegreen;
+        label.Effect = TemporaryLabel.TextEffect.Tornado;
+        label.GlobalPosition = Root.AsNode().GlobalPosition;
+        Root.AsNode().GetParent().AddChild(label);
     }
 }
