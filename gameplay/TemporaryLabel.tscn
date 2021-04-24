@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://gameplay/TemporaryLabel.cs" type="Script" id=1]
+
+[node name="TemporaryLabel" type="Node2D"]
+position = Vector2( -1.05945, 0 )
+script = ExtResource( 1 )
+Text = null
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.32433
+margin_top = -15.3622
+margin_right = 121.324
+margin_bottom = 16.6378
+rect_clip_content = false
+bbcode_enabled = true
+bbcode_text = "[shake]placeholder"
+text = "placeholder"
+__meta__ = {
+"_edit_use_anchors_": false
+}
