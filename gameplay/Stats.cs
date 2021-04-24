@@ -5,11 +5,9 @@ using Godot;
 public class Stats : Node2D, IStats {
     private PackedScene _fadingLabelScene;
     private PackedScene _kaboomScene;
-    
-    private List<AudioStreamPlayer> _audioHitEnemy;
-    
-    private readonly Random _random = new Random();
-    
+
+    private SfxPlayer _tookDamageSfx;
+
     [Export(PropertyHint.Range, "10,255")] public int MaxHealth { get; set; } = 10;
     public int RemainingHealth { get; set; } = 10;
 
@@ -27,11 +25,7 @@ public class Stats : Node2D, IStats {
         RemainingHealth = MaxHealth;
         Root = this.FindRoot();
         
-        _audioHitEnemy = new List<AudioStreamPlayer> {
-            GetNode<AudioStreamPlayer>("AudioHitEnemy1"),
-            GetNode<AudioStreamPlayer>("AudioHitEnemy2"),
-            GetNode<AudioStreamPlayer>("AudioHitEnemy3")
-        };
+        _tookDamageSfx = this.GetNode<SfxPlayer>();
     }
 
     public void Heal(int amount) {
@@ -66,7 +60,7 @@ public class Stats : Node2D, IStats {
             kaboom.Play();
             Root.Die();
         } else {
-            _audioHitEnemy[_random.Next(0, _audioHitEnemy.Count)].Play();
+            _tookDamageSfx.PlayRandom();
         }
     }
 

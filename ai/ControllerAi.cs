@@ -10,9 +10,8 @@ public class ControllerAi : Node2D {
     private IRoot _root;
     private Vision _vision;
 
-    private List<AudioStreamPlayer> _audioHitWall;
-
-    private readonly Random _random = new Random();
+    private SfxPlayer _hitWallSfx;
+    
     
     public override void _Ready() {
         _battleSystem = GetNode<BattleSystem>("/root/BattleSystem");
@@ -23,10 +22,7 @@ public class ControllerAi : Node2D {
         _root = this.FindRoot();
         _vision = _root.AsNode().GetNode<Vision>();
 
-        _audioHitWall = new List<AudioStreamPlayer> {
-            GetNode<AudioStreamPlayer>("AudioHitWall1"),
-            GetNode<AudioStreamPlayer>("AudioHitWall2")
-        };
+        _hitWallSfx = this.GetNode<SfxPlayer>();
     }
 
     public void OnHeartBeat(int _) {
@@ -43,7 +39,7 @@ public class ControllerAi : Node2D {
                 var vector = direction.AsVector2() * 32;
                 _root.AsNode().GlobalPosition += vector;
             } else {
-                _audioHitWall[_random.Next(0, _audioHitWall.Count)].Play();
+                _hitWallSfx.PlayRandom();
             }
         }
     }

@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/sprite_sheet.png" type="Texture" id=1]
 [ext_resource path="res://gameplay/Kaboom.cs" type="Script" id=2]
 [ext_resource path="res://assets/explode_1.wav" type="AudioStream" id=3]
 [ext_resource path="res://assets/explode_2.wav" type="AudioStream" id=4]
 [ext_resource path="res://assets/explode_3.wav" type="AudioStream" id=5]
+[ext_resource path="res://code/SfxPlayer.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Beat0"
@@ -114,11 +115,13 @@ anims/Beat2 = SubResource( 3 )
 anims/Beat3 = SubResource( 4 )
 anims/Fade = SubResource( 5 )
 
-[node name="AudioExplode1" type="AudioStreamPlayer" parent="."]
+[node name="SfxPlayer" parent="." instance=ExtResource( 6 )]
+
+[node name="AudioExplode1" type="AudioStreamPlayer" parent="SfxPlayer"]
 stream = ExtResource( 3 )
 
-[node name="AudioExplode2" type="AudioStreamPlayer" parent="."]
+[node name="AudioExplode2" type="AudioStreamPlayer" parent="SfxPlayer"]
 stream = ExtResource( 4 )
 
-[node name="AudioExplode3" type="AudioStreamPlayer" parent="."]
+[node name="AudioExplode3" type="AudioStreamPlayer" parent="SfxPlayer"]
 stream = ExtResource( 5 )
