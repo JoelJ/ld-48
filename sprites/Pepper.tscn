@@ -75,6 +75,8 @@ script = ExtResource( 2 )
 [node name="Vision" parent="." instance=ExtResource( 5 )]
 
 [node name="Stats" parent="." instance=ExtResource( 4 )]
+Strength = 5
+Defense = 10
 
 [node name="HitBox" parent="." instance=ExtResource( 3 )]
 
