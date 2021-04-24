@@ -27,6 +27,10 @@ public class Stats : Node2D, IStats {
     public void Hurt(int amount) {
         RemainingHealth = Mathf.Clamp(RemainingHealth - amount, 0, MaxHealth);
         GD.Print(Root.Name(), " hurt by ", amount, " -> ", RemainingHealth);
+
+        if (RemainingHealth <= 0) {
+            Root.Die();
+        }
     }
 
     public void Miss() {

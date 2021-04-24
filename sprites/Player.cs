@@ -23,4 +23,8 @@ public class Player : Node2D, IRoot {
 		var frame = (beat / Speed) % 4;
 		_animationPlayer.Play($"Beat{frame}");
 	}
+
+	public void Die() {
+		QueueFree();
+	}
 }

@@ -7,6 +7,7 @@ using Godot;
 /// </summary>
 public interface IRoot {
     IStats Stats { get; }
+    void Die();
 }
 
 public static class RootUtils {
