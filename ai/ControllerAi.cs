@@ -14,8 +14,6 @@ public class ControllerAi : Node2D {
 
     public void OnHeartBeat(int _) {
         var direction = ReadInput();
-        GD.Print(direction);
-        
         var vector = direction.AsVector2() * 32;
         _parent.GlobalPosition += vector;
     }
