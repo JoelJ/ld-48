@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/sprite_sheet.png" type="Texture" id=1]
 [ext_resource path="res://sprites/Player.cs" type="Script" id=2]
+[ext_resource path="res://ai/ControllerAi.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "IdleDown"
@@ -137,6 +138,7 @@ script = ExtResource( 2 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 hframes = 16
+vframes = 2
 frame = 10
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -148,3 +150,5 @@ anims/WalkDown = SubResource( 5 )
 anims/WalkLeft = SubResource( 6 )
 anims/WalkRight = SubResource( 7 )
 anims/WalkUp = SubResource( 8 )
+
+[node name="ControllerAi" parent="." instance=ExtResource( 3 )]
