@@ -68,13 +68,12 @@ tracks/0/keys = {
 
 [node name="Pepper" type="Node2D"]
 script = ExtResource( 2 )
-NumberBeats = 4
 
 [node name="Sprite" type="Sprite" parent="."]
 rotation = -0.00273403
 texture = ExtResource( 1 )
 hframes = 16
-vframes = 2
+vframes = 16
 frame = 19
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
