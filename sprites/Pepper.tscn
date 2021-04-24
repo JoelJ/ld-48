@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/sprite_sheet.png" type="Texture" id=1]
 [ext_resource path="res://sprites/Pepper.cs" type="Script" id=2]
+[ext_resource path="res://interaction/HitBox.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Animation" id=4]
 resource_name = "Beat0"
@@ -68,6 +69,8 @@ tracks/0/keys = {
 
 [node name="Pepper" type="Node2D"]
 script = ExtResource( 2 )
+
+[node name="HitBox" parent="." instance=ExtResource( 3 )]
 
 [node name="Sprite" type="Sprite" parent="."]
 rotation = -0.00273403
