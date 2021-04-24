@@ -5,7 +5,7 @@ public class HeartBeat : Node2D {
     [Signal]
     public delegate void OnHeartBeat(int beat);
 
-    public float TimeBetweenBeatsSeconds { get; } = 0.5f;
+    public float TimeBetweenBeatsSeconds { get; } = 0.2f;
     public int MaxBeatsPerCycle { get; } = 12;
 
     public int CurrentBeat { get; private set; }
