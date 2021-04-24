@@ -6,7 +6,7 @@ public class HeartBeat : Node2D {
     public delegate void OnHeartBeat(int beat);
 
     public float TimeBetweenBeatsSeconds { get; } = 0.5f;
-    public int MaxBeatsPerCycle { get; } = int.MaxValue; // might need to figure out a better value if we're syncing to music. at least we don't overflow...
+    public int MaxBeatsPerCycle { get; } = 12;
 
     public int CurrentBeat { get; private set; }
     private float _timeSinceLastBeat;

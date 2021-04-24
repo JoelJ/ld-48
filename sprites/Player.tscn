@@ -1,11 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/sprite_sheet.png" type="Texture" id=1]
 [ext_resource path="res://sprites/Player.cs" type="Script" id=2]
 [ext_resource path="res://ai/ControllerAi.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Animation" id=1]
-resource_name = "IdleDown"
+resource_name = "Beat0"
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -21,7 +21,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=2]
-resource_name = "IdleLeft"
+resource_name = "Beat1"
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -33,11 +33,11 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 13 ]
+"values": [ 2 ]
 }
 
 [sub_resource type="Animation" id=3]
-resource_name = "IdleRight"
+resource_name = "Beat2"
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -49,11 +49,11 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 10 ]
+"values": [ 0 ]
 }
 
 [sub_resource type="Animation" id=4]
-resource_name = "IdleUp"
+resource_name = "Beat3"
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -65,71 +65,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 5 ]
-}
-
-[sub_resource type="Animation" id=5]
-length = 0.8
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 1, 0, 3, 4, 3 ]
-}
-
-[sub_resource type="Animation" id=6]
-length = 0.4
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 13, 14, 15, 14 ]
-}
-
-[sub_resource type="Animation" id=7]
-length = 0.4
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 10, 11, 12, 11 ]
-}
-
-[sub_resource type="Animation" id=8]
-length = 0.8
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 5, 6, 7, 6, 5, 8, 9, 8 ]
+"values": [ 4 ]
 }
 
 [node name="Player" type="Node2D"]
@@ -139,16 +75,12 @@ script = ExtResource( 2 )
 texture = ExtResource( 1 )
 hframes = 16
 vframes = 2
-frame = 10
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/IdleDown = SubResource( 1 )
-anims/IdleLeft = SubResource( 2 )
-anims/IdleRight = SubResource( 3 )
-anims/IdleUp = SubResource( 4 )
-anims/WalkDown = SubResource( 5 )
-anims/WalkLeft = SubResource( 6 )
-anims/WalkRight = SubResource( 7 )
-anims/WalkUp = SubResource( 8 )
+autoplay = "Beat0"
+anims/Beat0 = SubResource( 1 )
+anims/Beat1 = SubResource( 2 )
+anims/Beat2 = SubResource( 3 )
+anims/Beat3 = SubResource( 4 )
 
 [node name="ControllerAi" parent="." instance=ExtResource( 3 )]
