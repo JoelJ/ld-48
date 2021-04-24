@@ -1,0 +1,60 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://code/SfxPlayer.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/music/snare1.wav" type="AudioStream" id=2]
+[ext_resource path="res://assets/music/note0.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/music/note2.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/music/note3.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/music/note9.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/music/note6.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/music/note5.wav" type="AudioStream" id=8]
+[ext_resource path="res://assets/music/note8.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/music/note4.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/music/bass.wav" type="AudioStream" id=11]
+[ext_resource path="res://code/BackgroundMusic.cs" type="Script" id=12]
+
+[node name="BackgroundMusic" type="Node2D"]
+script = ExtResource( 12 )
+
+[node name="NotesSfxPlayer" parent="." instance=ExtResource( 1 )]
+Volume = 70
+
+[node name="AudioStreamPlayer0" type="AudioStreamPlayer" parent="NotesSfxPlayer"]
+stream = ExtResource( 3 )
+
+[node name="AudioStreamPlayer1" type="AudioStreamPlayer" parent="NotesSfxPlayer"]
+stream = ExtResource( 3 )
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="NotesSfxPlayer"]
+stream = ExtResource( 4 )
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="NotesSfxPlayer"]
+stream = ExtResource( 5 )
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="NotesSfxPlayer"]
+stream = ExtResource( 10 )
+
+[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="NotesSfxPlayer"]
+stream = ExtResource( 8 )
+
+[node name="AudioStreamPlayer6" type="AudioStreamPlayer" parent="NotesSfxPlayer"]
+stream = ExtResource( 7 )
+
+[node name="AudioStreamPlayer7" type="AudioStreamPlayer" parent="NotesSfxPlayer"]
+stream = ExtResource( 5 )
+
+[node name="AudioStreamPlayer8" type="AudioStreamPlayer" parent="NotesSfxPlayer"]
+stream = ExtResource( 9 )
+
+[node name="AudioStreamPlayer9" type="AudioStreamPlayer" parent="NotesSfxPlayer"]
+stream = ExtResource( 6 )
+
+[node name="SnareSfxPlayer" parent="." instance=ExtResource( 1 )]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SnareSfxPlayer"]
+stream = ExtResource( 2 )
+
+[node name="BassSfxPlayer" parent="." instance=ExtResource( 1 )]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="BassSfxPlayer"]
+stream = ExtResource( 11 )

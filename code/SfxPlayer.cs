@@ -5,6 +5,9 @@ using System.Collections.Generic;
 public class SfxPlayer : Node2D {
     public static readonly Random RANDOM = new Random();
     
+    [Export(PropertyHint.Range, "0, 99")]
+    public int Volume { get; set; } = 80;
+    
     private List<AudioStreamPlayer> _audioStreamPlayer;
     
     public override void _Ready() {
@@ -19,6 +22,9 @@ public class SfxPlayer : Node2D {
 
     public void PlayRandom() {
         var index = RANDOM.Next(0, _audioStreamPlayer.Count);
-        _audioStreamPlayer[index].Play();
+        var audioStreamPlayer = _audioStreamPlayer[index];
+
+        audioStreamPlayer.VolumeDb = Volume - 80;
+        audioStreamPlayer.Play();
     }
 }

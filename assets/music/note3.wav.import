@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/note3.wav-77f513d5e87df2c6bfd3392f2b0886e7.sample"
+
+[deps]
+
+source_file="res://assets/music/note3.wav"
+dest_files=[ "res://.import/note3.wav-77f513d5e87df2c6bfd3392f2b0886e7.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
