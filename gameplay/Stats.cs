@@ -1,9 +1,14 @@
 using System;
+using System.Collections.Generic;
 using Godot;
 
 public class Stats : Node2D, IStats {
     private PackedScene _fadingLabelScene;
     private PackedScene _kaboomScene;
+    
+    private List<AudioStreamPlayer> _audioHitEnemy;
+    
+    private readonly Random _random = new Random();
     
     [Export(PropertyHint.Range, "10,255")] public int MaxHealth { get; set; } = 10;
     public int RemainingHealth { get; set; } = 10;
@@ -21,6 +26,12 @@ public class Stats : Node2D, IStats {
         _kaboomScene = ResourceLoader.Load<PackedScene>($"res://gameplay/Kaboom.tscn");
         RemainingHealth = MaxHealth;
         Root = this.FindRoot();
+        
+        _audioHitEnemy = new List<AudioStreamPlayer> {
+            GetNode<AudioStreamPlayer>("AudioHitEnemy1"),
+            GetNode<AudioStreamPlayer>("AudioHitEnemy2"),
+            GetNode<AudioStreamPlayer>("AudioHitEnemy3")
+        };
     }
 
     public void Heal(int amount) {
@@ -52,7 +63,10 @@ public class Stats : Node2D, IStats {
             var kaboom = _kaboomScene.Instance<Kaboom>();
             kaboom.GlobalPosition = Root.AsNode().GlobalPosition;
             toAddChildTo.AddChild(kaboom);
+            kaboom.Play();
             Root.Die();
+        } else {
+            _audioHitEnemy[_random.Next(0, _audioHitEnemy.Count)].Play();
         }
     }
 

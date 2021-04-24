@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/hit_wall_1.wav-2f42b63a0c0e35be631b9891690aa753.sample"
+
+[deps]
+
+source_file="res://assets/hit_wall_1.wav"
+dest_files=[ "res://.import/hit_wall_1.wav-2f42b63a0c0e35be631b9891690aa753.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
