@@ -5,17 +5,27 @@ public class Player : Node2D {
 	private AnimationPlayer _animationPlayer;
 
 	private Direction _direction = Direction.Down;
+
+	private HeartBeat _heartBeat;
 	
 	public override void _Ready() {
+		_heartBeat = GetNode<HeartBeat>("/root/HeartBeat");
+		_heartBeat.SafeConnect(nameof(HeartBeat.OnHeartBeat), this, nameof(OnHeartBeat));
+		
 		_animationPlayer = this.GetNode<AnimationPlayer>();
 		_animationPlayer.Play("WalkDown");
 	}
 
 	public override void _PhysicsProcess(float delta) {
 		var direction = ReadInput();
-		ApplyAnimation(direction);
+		if (direction != Direction.None) {
+			_direction = direction;
+			ApplyAnimation(_direction);
+		}
+	}
 
-		_direction = direction;
+	public void OnHeartBeat(int _) {
+		_direction = Direction.None;
 	}
 
 	private Direction ReadInput() {
