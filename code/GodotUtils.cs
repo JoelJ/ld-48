@@ -26,11 +26,6 @@ public static class GodotUtils {
 
         throw new Exception($"Could not find the root of {self.Name}");
     }
-
-    public static Node2D AsNode(this IRoot self) {
-        return self as Node2D ??
-               throw new Exception($"object implementing {nameof(IRoot)} but does not extend {nameof(Node2D)}");
-    }
     
     public static void SafeConnect(this Node source, string sourceSignal, Node target, string targetMethod) {
         var connectResult = source.Connect(sourceSignal, target, targetMethod);

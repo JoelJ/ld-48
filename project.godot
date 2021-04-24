@@ -17,6 +17,7 @@ config/icon="res://icon.png"
 [autoload]
 
 HeartBeat="*res://code/HeartBeat.tscn"
+BattleSystem="*res://gameplay/BattleSystem.tscn"
 
 [importer_defaults]
 

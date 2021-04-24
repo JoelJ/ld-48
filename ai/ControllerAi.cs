@@ -2,16 +2,20 @@ using System.Linq;
 using Godot;
 
 public class ControllerAi : Node2D {
+    private BattleSystem _battleSystem;
     private HeartBeat _heartBeat;
-    private Node2D _parent;
+    
+    private IRoot _root;
     private Vision _vision;
     
     public override void _Ready() {
+        _battleSystem = GetNode<BattleSystem>("/root/BattleSystem");
+        
         _heartBeat = GetNode<HeartBeat>("/root/HeartBeat");
         _heartBeat.SafeConnect(nameof(HeartBeat.OnHeartBeat), this, nameof(OnHeartBeat));
 
-        _parent = this.FindRoot().AsNode();
-        _vision = _parent.GetNode<Vision>();
+        _root = this.FindRoot();
+        _vision = _root.AsNode().GetNode<Vision>();
     }
 
     public void OnHeartBeat(int _) {
@@ -20,10 +24,13 @@ public class ControllerAi : Node2D {
         if (direction != Direction.None) {
             var enemiesInSight = _vision.EnemiesInSight(direction);
             if (enemiesInSight.Count > 0) {
-                GD.Print("Attacking ", enemiesInSight.First().AsNode().Name);
+                var defender = enemiesInSight.First();
+                GD.Print(_root.Name(), " attacking ", defender.Name());
+                
+                _battleSystem.Fight(_root, defender);
             } else if (_vision.CanMove(direction)) {
                 var vector = direction.AsVector2() * 32;
-                _parent.GlobalPosition += vector;
+                _root.AsNode().GlobalPosition += vector;
             }
         }
     }

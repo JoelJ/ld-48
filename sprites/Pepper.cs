@@ -8,11 +8,15 @@ public class Pepper : Node2D, IRoot {
     private HeartBeat _heartBeat;
     private AnimationPlayer _animationPlayer;
     
+    public IStats Stats { get; private set; }
+    
     public override void _Ready() {
         _heartBeat = GetNode<HeartBeat>("/root/HeartBeat");
         _heartBeat.SafeConnect(nameof(HeartBeat.OnHeartBeat), this, nameof(OnHeartBeat));
 
         _animationPlayer = this.GetNode<AnimationPlayer>();
+        
+        Stats = this.GetNode<Stats>();
     }
     
     public void OnHeartBeat(int beat) {

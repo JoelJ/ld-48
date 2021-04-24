@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/sprite_sheet.png" type="Texture" id=1]
 [ext_resource path="res://sprites/Player.cs" type="Script" id=2]
 [ext_resource path="res://ai/ControllerAi.tscn" type="PackedScene" id=3]
 [ext_resource path="res://interaction/Vision.tscn" type="PackedScene" id=4]
 [ext_resource path="res://interaction/HitBox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://gameplay/Stats.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Animation" id=6]
 resource_name = "Beat0"
@@ -72,6 +73,13 @@ tracks/0/keys = {
 
 [node name="Player" type="Node2D"]
 script = ExtResource( 2 )
+
+[node name="Stats" parent="." instance=ExtResource( 6 )]
+MaxHealth = 100
+Strength = 5
+Defense = 5
+Accuracy = 5
+Evasion = 5
 
 [node name="Vision" parent="." instance=ExtResource( 4 )]
 
