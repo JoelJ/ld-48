@@ -18,11 +18,11 @@ public class BackgroundMusic : Node2D {
     }
     
     public void OnHeartBeat(int beat) {
-        if ((beat % 2) == 0) {
+        if ((beat % 12) == 0) {
             _notesSfx.PlayRandom();
         }
         
-        if ((beat % 8) == 0) {
+        if ((beat % 12) == 6) {
             _notesSfx.PlayRandom();
         }
 
