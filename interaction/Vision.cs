@@ -1,8 +1,12 @@
 using Godot;
 using System.Collections.Generic;
+using System.Linq;
 
 public class Vision : Node2D {
+    private const Direction ALL_DIRECTIONS = Direction.Up | Direction.Down | Direction.Left | Direction.Right;
     public Direction Blocked { get; private set; }
+
+    public Direction Unblocked => ALL_DIRECTIONS & ~Blocked;
 
     private Dictionary<Direction, HashSet<IRoot>> _enemiesInSight;
     private IRoot _root;
@@ -44,6 +48,24 @@ public class Vision : Node2D {
 
     public HashSet<IRoot> EnemiesInSight(Direction direction) {
         return _enemiesInSight[direction];
+    }
+
+    /// <summary>
+    /// Finds if an enemy is in sight. Since this AI is going on baddies, and in the context of a baddie, the enemy is the player
+    /// then we just return the first one, since there is only ever going to be one. 
+    /// </summary>
+    /// <param name="result">if the method call returns false, this will be null. Otherwise it will be the found enemy if vision</param>
+    /// <returns>true if an enemy is found.</returns>
+    public bool HasEnemyInSight(out IRoot result) {
+        foreach (var enemies in _enemiesInSight.Values) {
+            foreach (var enemy in enemies) {
+                result = enemy;
+                return true;
+            }
+        }
+
+        result = null;
+        return false;
     }
     
     public bool CanMove(Direction direction) {
