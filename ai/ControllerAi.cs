@@ -2,28 +2,26 @@ using Godot;
 using System;
 
 public class ControllerAi : Node2D {
-    public Direction Direction { get; private set; } = Direction.Down;
-    
     private HeartBeat _heartBeat;
+    private Node2D _parent;
     
     public override void _Ready() {
         _heartBeat = GetNode<HeartBeat>("/root/HeartBeat");
         _heartBeat.SafeConnect(nameof(HeartBeat.OnHeartBeat), this, nameof(OnHeartBeat));
+
+        _parent = this.FindRoot().AsNode();
     }
 
-    public override void _PhysicsProcess(float delta) {
-        var direction = ReadInput();
-        if (direction != Direction.None) {
-            Direction = direction;
-        }
-    }
-    
     public void OnHeartBeat(int _) {
-        Direction = Direction.None;
+        var direction = ReadInput();
+        GD.Print(direction);
+        
+        var vector = direction.AsVector2() * 32;
+        _parent.GlobalPosition += vector;
     }
     
     private Direction ReadInput() {
-        if (Input.IsActionJustPressed("up")) {
+        if (Input.IsActionPressed("up")) {
             return Direction.Up;
         }
 

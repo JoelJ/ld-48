@@ -12,6 +12,25 @@ public static class GodotUtils {
         var name = typeof(T).Name;
         return self.GetNode<T>(name) ?? throw new Exception($"Unable to find child node with name '{name}' for node '{self.Name}'");
     }
+
+    public static IRoot FindRoot(this Node2D self) {
+        Node current = self;
+
+        while (current != null) {
+            if (current is IRoot root) {
+                return root;
+            }
+            
+            current = current.GetParent();
+        }
+
+        throw new Exception($"Could not find the root of {self.Name}");
+    }
+
+    public static Node2D AsNode(this IRoot self) {
+        return self as Node2D ??
+               throw new Exception($"object implementing {nameof(IRoot)} but does not extend {nameof(Node2D)}");
+    }
     
     public static void SafeConnect(this Node source, string sourceSignal, Node target, string targetMethod) {
         var connectResult = source.Connect(sourceSignal, target, targetMethod);

@@ -1,7 +1,6 @@
 using Godot;
-using System;
 
-public class Player : Node2D {
+public class Player : Node2D, IRoot {
 	[Export(PropertyHint.Range, "1,3")]
 	public int Speed { get; set; } = 1; // lower is faster
 

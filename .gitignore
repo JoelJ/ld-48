@@ -1,4 +1,4 @@
-.mono
-.import
-.idea
+.mono/
+.import/
+.idea/
 mono_crash.*.json

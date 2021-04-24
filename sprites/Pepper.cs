@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class Pepper : Node2D {
+public class Pepper : Node2D, IRoot {
     [Export(PropertyHint.Range, "1,3")]
     public int Speed { get; set; } = 1; // lower is faster
     
