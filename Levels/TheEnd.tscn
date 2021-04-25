@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://sprites/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sprites/static/FloorTileMap.tscn" type="PackedScene" id=2]
+
+[node name="The End" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1024.0
+margin_bottom = 608.0
+color = Color( 0.133333, 0.0666667, 0.0666667, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 480.0
+margin_top = 256.0
+margin_right = 768.0
+margin_bottom = 480.0
+rect_clip_content = false
+bbcode_enabled = true
+bbcode_text = "[tornado]Thanks for Playing!"
+text = "Thanks for Playing!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FloorTileMap" parent="." instance=ExtResource( 2 )]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 512, 320 )
