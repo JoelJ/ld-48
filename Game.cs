@@ -6,13 +6,15 @@ public class Game : Node2D {
 
     private TileMap _floorTileMap;
     private Player _player;
+    private Node2D _level;
     
     public override void _Ready() {
         _fogScene = ResourceLoader.Load<PackedScene>("res://sprites/static/Fog.tscn");
 
-        _floorTileMap = GetNode<TileMap>("FloorTileMap");
+        _level = GetNode<Node2D>("Level");
+        _floorTileMap = _level.GetNode<TileMap>("FloorTileMap");
 
-        _player = this.GetNode<Player>();
+        _player = _level.GetNode<Player>();
         _player.SafeConnect(nameof(Player.StairsGet), this, nameof(OnStairsGet));
 
         var cells = _floorTileMap.GetUsedCells();
@@ -20,12 +22,12 @@ public class Game : Node2D {
             var fogPosition = cellVector * _floorTileMap.CellSize;
             var fog = _fogScene.Instance<Fog>();
             fog.Position = fogPosition;
-            AddChild(fog);
+            _level.AddChild(fog);
         }
     }
 
     public void OnStairsGet(string destination) {
         GD.Print("Stairs ", destination);
-        QueueFree();
+        _level.QueueFree();
     }
 }
