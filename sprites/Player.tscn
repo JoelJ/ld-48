@@ -75,6 +75,8 @@ tracks/0/keys = {
 [node name="Player" type="Node2D"]
 script = ExtResource( 2 )
 
+[node name="Light" parent="." instance=ExtResource( 7 )]
+
 [node name="Stats" parent="." instance=ExtResource( 6 )]
 MaxHealth = 100
 Strength = 5
@@ -98,6 +100,7 @@ collision_mask = 6
 
 [node name="HitBox" parent="." instance=ExtResource( 5 )]
 collision_layer = 1
+collision_mask = 16
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -114,6 +117,6 @@ anims/Beat3 = SubResource( 4 )
 
 [node name="ControllerAi" parent="." instance=ExtResource( 3 )]
 
-[node name="Light" parent="." instance=ExtResource( 7 )]
+[connection signal="area_entered" from="HitBox" to="." method="OnHitBoxEntered"]
 
 [editable path="Vision"]
