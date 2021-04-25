@@ -9,6 +9,11 @@ Unfortunately, I only have the first 30 of the 48 hours to compete.
 So I got as much as I could. Hopefully the vision of the game is there. :)
 Even if it's not I had a lot of fun doing this.
 
+## How to Play
+
+WASD / Arrows to move. Try to get to the stairs. 
+Walk into enemies to attack them. Careful, they attack back if you're next to them!
+
 # Background / Story
 
 When my daughter was young she enjoyed when the "Tickle Monster" came to play.
