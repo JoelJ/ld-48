@@ -12,6 +12,10 @@ public class Game : Node2D {
         _fogScene = ResourceLoader.Load<PackedScene>("res://sprites/static/Fog.tscn");
 
         _level = GetNode<Node2D>("Level");
+        InitializeLevel();
+    }
+
+    private void InitializeLevel() {
         _floorTileMap = _level.GetNode<TileMap>("FloorTileMap");
 
         _player = _level.GetNode<Player>();
@@ -28,6 +32,16 @@ public class Game : Node2D {
 
     public void OnStairsGet(string destination) {
         GD.Print("Stairs ", destination);
+        CallDeferred(nameof(ChangeLevel), destination);
+        
+    }
+
+    private void ChangeLevel(string level) {
         _level.QueueFree();
+        
+        var nextLevelScene = ResourceLoader.Load<PackedScene>(level);
+        _level = nextLevelScene.Instance<Node2D>();
+        AddChild(_level);
+        InitializeLevel();
     }
 }
